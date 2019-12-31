@@ -1,15 +1,31 @@
 <template>
-  <HelloWorld msg="Hello!"/>
+  <div>
+    <Episode v-for="episode in episodes" :key="episode.id" :episode="episode"></Episode>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Episode from "@/components/Episode";
+import EpisodeClass from "@/components/EpisodeClass"
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "home",
   components: {
-    HelloWorld
-  }
+    Episode
+  },
+  async created(){
+    await this.loadEpisodes();
+  },
+  methods: {
+    ...mapActions(['getEpisodes']),
+    async loadEpisodes(){
+      await this.getEpisodes();
+    }
+  },
+  computed: {
+    ...mapState(['episodes'])
+  },
 };
 </script>

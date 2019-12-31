@@ -1,13 +1,28 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Store } from "vuex";
+
+import { GET_EPISODES } from "./mutation-types";
+import Episode from '@/components/EpisodeClass';
+
+import { dataService } from '@/shared/data.service';
 
 Vue.use(Vuex);
 
-const state = () => {};
+const state = () => ({
+  episodes: []
+});
+const mutations = {
+  [GET_EPISODES](state: any, episodes: Episode) {
+    state.episodes = episodes;
+  }
+};
 
-const mutations = {};
-
-const actions = {};
+const actions = {
+  async getEpisodes(store: any){
+    const episodes = await dataService.getEpisodes();
+    store.commit(GET_EPISODES, episodes);
+  }
+};
 
 const getters = {};
 

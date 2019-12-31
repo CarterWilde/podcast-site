@@ -1,0 +1,1 @@
+export const API: string = process.env.VUE_APP_API;
