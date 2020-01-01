@@ -11,7 +11,7 @@ export default class Episode {
     duration: number;
     hq: boolean;
     guid: string;
-    inactive_at: object;
+    inactive_at!: object;
     episode_number: number;
     season_number: number;
     explicit: boolean;
