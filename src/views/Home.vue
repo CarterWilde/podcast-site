@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Episode v-for="episode in episodes" :key="episode.id" :episode="episode"></Episode>
+  <div style="overflow-y: scroll">
+      <Episode v-for="episode in episodes" :key="episode.id" :episode="episode"></Episode>
   </div>
 </template>
 
